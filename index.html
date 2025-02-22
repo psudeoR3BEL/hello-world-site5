@@ -1,0 +1,219 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blue Social Media</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            background-color: #e0f7fa; /* Light blue background */
+            color: #333;
+        }
+
+        .container {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+
+        header {
+            background-color: #03a9f4; /* Medium blue header */
+            color: white;
+            padding: 20px 0;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        nav {
+            background-color: #0288d1; /* Darker blue nav */
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 20px;
+            display: inline-block;
+        }
+
+        nav a:hover {
+            background-color: #01579b; /* Even darker blue on hover */
+        }
+
+        .post {
+            background-color: white;
+            border: 1px solid #b2ebf2; /* Light blue border */
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+        }
+
+        .post-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .profile-pic {
+            width: 50px;
+            height: 50px;
+            background-color: #7bc0e3; /* Placeholder profile pic color */
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .username {
+            font-weight: bold;
+            color: #0288d1; /* Darker blue username */
+        }
+
+        .post-content {
+            margin-bottom: 10px;
+        }
+
+        .post-actions {
+            display: flex;
+            justify-content: flex-start;
+        }
+
+        .post-actions button {
+            background-color: #03a9f4; /* Medium blue button */
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+
+        .post-actions button:hover {
+            background-color: #0288d1; /* Darker blue button on hover */
+        }
+
+        .create-post {
+            background-color: white;
+            border: 1px solid #b2ebf2; /* Light blue border */
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+
+        .create-post textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #b2ebf2; /* Light blue border */
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        .create-post button {
+            background-color: #03a9f4; /* Medium blue button */
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .create-post button:hover {
+            background-color: #0288d1; /* Darker blue button on hover */
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px 0;
+            background-color: #0288d1; /* Darker blue footer */
+            color: white;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Blue Social</h1>
+    </header>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">Profile</a>
+        <a href="#">Friends</a>
+        <a href="#">Messages</a>
+    </nav>
+
+    <div class="container">
+        <div class="create-post">
+            <h3>Create Post</h3>
+            <textarea id="post-text" placeholder="What's on your mind?"></textarea>
+            <button onclick="createPost()">Post</button>
+        </div>
+
+        <div id="posts">
+            <!-- Posts will be added here by JavaScript -->
+            <div class="post">
+                <div class="post-header">
+                    <div class="profile-pic"></div>
+                    <h4 class="username">John Doe</h4>
+                </div>
+                <div class="post-content">
+                    <p>This is a sample post. Welcome to Blue Social!</p>
+                </div>
+                <div class="post-actions">
+                    <button>Like</button>
+                    <button>Comment</button>
+                </div>
+            </div>
+
+            <div class="post">
+                <div class="post-header">
+                    <div class="profile-pic"></div>
+                    <h4 class="username">Jane Smith</h4>
+                </div>
+                <div class="post-content">
+                    <p>Another day, another post on Blue Social. Having a great time!</p>
+                </div>
+                <div class="post-actions">
+                    <button>Like</button>
+                    <button>Comment</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        &copy; 2023 Blue Social
+    </footer>
+
+    <script>
+        function createPost() {
+            const postText = document.getElementById('post-text').value;
+            if (postText.trim() !== "") {
+                const postsContainer = document.getElementById('posts');
+                const newPost = document.createElement('div');
+                newPost.classList.add('post');
+                newPost.innerHTML = `
+                    <div class="post-header">
+                        <div class="profile-pic"></div>
+                        <h4 class="username">You</h4>
+                    </div>
+                    <div class="post-content">
+                        <p>${postText}</p>
+                    </div>
+                    <div class="post-actions">
+                        <button>Like</button>
+                        <button>Comment</button>
+                    </div>
+                `;
+                postsContainer.prepend(newPost); // Add new post at the beginning
+                document.getElementById('post-text').value = ""; // Clear textarea
+            } else {
+                alert("Post cannot be empty!");
+            }
+        }
+    </script>
+</body>
+</html>
